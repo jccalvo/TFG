@@ -3,6 +3,7 @@ Carpeta Memoria latex
 ### Autor: Juan Carlos Calvo Sansegundo ###
 ### Fecha actualización: 23/07/2017 ###
 
+
 Esta carpeta contiene los siguientes documentos:
 
 1. ficheros: esta carpeta contiene los ficheros con el código que ha
@@ -14,16 +15,11 @@ sido incluido en el trabajo.
 
 3. Los distintos ficheros que componen cada uno de los apartados de la memoria:
 
----> main.tex: fichero ejecutable.
-
+---> 0 main.tex: fichero ejecutable.
 ---> 01.Dedicatoria.tex: fichero con la dedicatoria.
-
 ---> 02.Agradecimientos.tex: fichero con los agradecimientos.
-
 ---> 03.ResumenES.tex: fichero con el resumen en español.
-
 ---> 04.ResumenEN.tex: fichero con el resumen en inglés. 
-
 ---> 05.Acronimos.tex: fichero con el índice de acrónimos.
 
 ---> 06.Introduccion.tex: fichero con el capitulo 1.
