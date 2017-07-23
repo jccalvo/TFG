@@ -2,7 +2,7 @@ Carpeta Memoria latex
  
 ### Autor: Juan Carlos Calvo Sansegundo ###
 ### Fecha actualización: 23/07/2017 ###
-
+========================================================================
 
 Esta carpeta contiene los siguientes documentos:
 
@@ -11,7 +11,7 @@ sido incluido en el trabajo.
 
 2. imagenes: esta carpeta contiene las imagenes utilizadas en la memoria.
 
-### NOTA: Para que compile es necesario mantener esta estructura de directorios. ###  
+### NOTA: Para que compile es necesario mantener esta estructura de directorios.###  
 
 3. Los distintos ficheros que componen cada uno de los apartados de la memoria:
 
