@@ -1,0 +1,40 @@
+\chapter{Conclusiones y Líneas Futuras}\label{cap:conclusiones}
+
+	En este cápitulo se exponen las conclusiones más importantes de este trabajo y cuáles son las bases para futuros trabajos relacionados.
+
+\section{Conclusiones}
+
+\noindent Una vez realizado el trabajo, las principales conclusiones que se extraen de él son:
+
+\begin{itemize}
+
+\item Se ha diseñado e implementado un sistema de actuación capaz de fijar la temperatura de una sala de servidores a un valor concreto, modificando la temperatura del sistema de refrigeración de dicha sala.
+
+\item Se ha realizado un diseño modular y fácilmente extendible a otros entornos con diferentes plataforma de monitorización y visualización de datos, unidades de refrigeración o con diferentes politicas de control.
+
+\item Se ha conseguido implementar un controlador PID sencillo que permite controlar la temperatura de la sala.
+
+\item Se ha logrado un sistema de actuación autónomo, capaz de responder a los cambios de temperatura de manera dinámica y estable.
+
+\item El sistema de actuación ha sido implantado en un entorno real (sala B039) y se integrado con la plataforma de monitorización y visualización \textit{Graphite}. Se ha verificado su funcionamiento en dicho entorno y se ha demostrado que el actuador funciona correctamente en un entorno real y consigue fijar la temperatura de la sala al valor deseado y para variaciones de temperatura tanto pequeñas como grandes.
+
+\end{itemize}
+
+\section{Lineas Futuras}
+
+	Para terminar, se detallan las posibles acciones futuras que pueden llevarse a cabo, partiendo este trabajo:
+
+\begin{itemize}
+
+\item Diseñar el hardware propio del sistema de actuación e implementar el software en él. En este trabajo, se ha utilizado una Raspberry PI como soporte hardware. 
+
+\item Analizar la posible implementación de otras políticas de control que permitan controlar la temperatura de la sala e implementarlas en el sistema de actuación de este trabajo para comprobar su funcionamiento. 
+
+\item Optimizar el controlador PID existente, mediante un ajuste más fino de sus parámetros, añadir configuraciones que eviten el efecto windup o usar otro tipo de configuraciones PID más sofisticadas para así conseguir optimizar el funcionamiento del actuador.
+
+\item Integrar el sistema de actuación en el sistema de optimización de CPDs diseñado por \textit{GreenLSI} y comprobar su funcionamiento en un entorno donde la temperatura óptima varía. En este trabajo, la temperatura óptima se elegía de manera arbitraria y era fijada por el usuario.
+
+\item Extender el sistema a varias unidades de refrigeración. El sistema diseñado en este trabajo actúa sobre un único sistema de refrigeración. Es recomendable estudiar cómo se puede integrar el actuador en un entorno donde hay varias unidades de refrigeración y cómo se puede elaborar una respuesta coordinada que logre que la sala alcance la temperatura óptima.
+
+\end{itemize}
+

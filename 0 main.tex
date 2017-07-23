@@ -1,0 +1,216 @@
+\documentclass[twoside,11pt]{book}
+% preambulo
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,activeacute,es-tabla]{babel}
+\usepackage{mathtools} 
+\usepackage{titlesec}
+\usepackage{eurosym}
+
+\usepackage{amssymb, amsmath, amsbsy} % simbolitos
+\usepackage{upgreek} % para poner letras griegas sin cursiva
+\usepackage{cancel} % para tachar
+\usepackage{mathdots} % para el comando \iddots
+\usepackage{mathrsfs} % para formato de letra
+\usepackage{stackrel} 
+
+% tamaño de las páginas y ejes
+\usepackage{vmargin}
+\setlength{\oddsidemargin}{37mm}
+\setlength{\evensidemargin}{30mm}
+\setlength{\headsep}{1.2cm}
+\setlength{\textwidth}{143mm}
+\setlength{\textheight}{225mm}
+\setlength{\topmargin}{30mm}
+\setlength{\headheight}{0mm}
+
+% Tamaño de los parrafos
+\setlength{\parskip}{0.5cm}
+\setlength{\parindent}{1cm}
+
+% Estilo del titulo de página
+\pagestyle{headings}
+\markboth{CAP'ITULO 1}{INTRODUCCI'ON}
+
+% enumerados
+\usepackage{enumerate}
+
+% Tablas
+\usepackage{multirow}
+\usepackage{longtable} % tablas largas
+\usepackage{rotating} % rotar tablas
+
+%color
+\usepackage[usenames]{color}
+
+%Algoritmos
+\usepackage{algorithmic}
+\usepackage{verbatim}
+\usepackage{listings}
+
+%document
+
+\usepackage{cite}
+\usepackage[backref=false]{hyperref}
+
+%graficos
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+
+\usepackage{listingsutf8}
+\lstset{ frame=Ltb,
+framerule=0pt,
+aboveskip=0.5cm,
+framextopmargin=3pt,
+framexbottommargin=2.5pt,
+framexleftmargin=0cm,
+framesep=0pt,
+rulesep=.4pt,
+backgroundcolor=\color{gray97},
+rulesepcolor=\color{black},
+%
+stringstyle=\ttfamily,
+showstringspaces = false,
+basicstyle=\small\ttfamily,
+commentstyle=\color{gray45},
+keywordstyle=\upshape\bfseries\ttfamily\large\color{blue},
+%
+numbers=none,
+numbersep=15pt,
+numberstyle=\tiny,
+numberfirstline = false,
+breaklines=true,
+breakindent=0pt,
+showtabs=false,
+%
+mathescape=true,
+%
+literate=
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+\definecolor{lightyellow}{rgb}{1,1,0.88}
+\definecolor{lavanda2}{rgb}{0.9,0.9,0.98}
+\definecolor{lavanda3}{rgb}{1,0.94,0.96}
+\definecolor{maroon}{rgb}{0.55,0.27,0.07}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray45}{gray}{.45}
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{macros}{
+language=C,
+basicstyle=\upshape\small\ttfamily,
+backgroundcolor=\color{lightyellow},
+commentstyle =\slshape\bfseries\color{gray45},
+emph={[3]size\_t,*,}, emphstyle={[3]\upshape\bfseries\ttfamily\large\color{blue}},
+}
+
+\lstdefinestyle{estructura}{
+language=C,
+basicstyle=\upshape\small\ttfamily,
+backgroundcolor=\color{lavanda2},
+commentstyle =\slshape\bfseries\color{gray45},
+emph={[3]size\_t,*,}, emphstyle={[3]\upshape\bfseries\ttfamily\large\color{blue}},
+}
+
+\lstdefinestyle{funcion}{
+language=C,
+basicstyle=\upshape\small\ttfamily,
+backgroundcolor=\color{lavanda3},
+otherkeywords={void,*},
+commentstyle =\slshape\bfseries\color{gray45},
+emph={[1]escribir\_objeto,solicitar_objeto,extraer_temperatura,calcular_error,calcular_tempcontrol,seleccionar_setpoint,enviar_datos,obtener_comando,modular_comando,transmitir_comando,iteracion,modular_bit ,@param}, emphstyle={[1]\upshape\bfseries\ttfamily\large\color{red}},
+emph={[2]static,@return}, emphstyle={[2]\itshape\bfseries\ttfamily\large\color{maroon}},
+emph={[3]size\_t,*}, emphstyle={[3]\upshape\bfseries\ttfamily\large\color{blue}},
+}
+
+\lstdefinestyle{pseudocodigo}{
+language=C,
+basicstyle=\upshape\small\ttfamily,
+backgroundcolor=\color{gray97},
+otherkeywords={void,*},
+commentstyle =\slshape\bfseries\color{gray45},
+emph={[1]escribir\_objeto,solicitar_objeto,extraer_temperatura,calcular_error,calcular_tempcontrol,seleccionar_setpoint,enviar_datos,obtener_comando,modular_comando,transmitir_comando,iteracion,modular_bit ,@param}, emphstyle={[1]\upshape\bfseries\ttfamily\large\color{red}},
+emph={[2]static,@return}, emphstyle={[2]\itshape\bfseries\ttfamily\large\color{maroon}},
+emph={[3]size\_t,*}, emphstyle={[3]\upshape\bfseries\ttfamily\large\color{blue}},
+}
+
+\lstdefinestyle{C}
+{language=C,
+}
+
+\lstdefinestyle{matlab}
+{language=matlab,
+}
+
+%Listas
+\usepackage{enumerate}
+
+%color para algoritmos
+\usepackage{fancyvrb}
+
+% tablas
+\usepackage{multirow} 
+\usepackage{tabulary}
+\usepackage{slashbox} % dibujar diagonales
+
+\setcounter{secnumdepth}{3} % para que ponga 1.1.1.1..
+\setcounter{tocdepth}{4} % para que añadir las secciones en el índice...
+
+
+\usepackage{epstopdf}
+
+\usepackage{float}
+
+
+\begin{document}
+        \frontmatter
+        \newpage
+            % para comenzar la numeracion de paginas en numeros romanos\begin{flushright}
+	\input{01.Dedicatoria}
+        \input{02.Agradecimientos}
+	\input{03.ResumenEs}
+	\input{04.ResumenEn}
+	\input{05.Acronimos}
+
+        \cleardoublepage
+        \tableofcontents % indice de contenidos
+
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{Índice de figuras} % para que aparezca en el indice de figuras
+	\listoffigures % indice de figuras
+
+	
+
+        \mainmatter 
+    
+        \clearpage
+	\input{06.Introduccion}
+	\input{07.EstadoDelArte}
+	\input{08.BancoDePruebas}
+	\input{09.Diseño}
+	\input{10.Implementacion}
+	\input{11.Test}
+	\input{12.Conclusiones}
+	\input{13.Anexo1}
+	\input{14.Anexo2}
+	\input{15.Anexo3}
+	\input{16.Bibliografia}
+
+\end{document}
