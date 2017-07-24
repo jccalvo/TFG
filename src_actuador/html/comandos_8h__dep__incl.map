@@ -1,0 +1,5 @@
+<map id="comandos.h" name="comandos.h">
+<area shape="rect" id="node2" href="$comandos_8c.html" title="Módulo que se encarga de convertir la señal de control proporcionada por el controlador en un comando..." alt="" coords="5,80,99,107"/>
+<area shape="rect" id="node3" href="$_p_i_d_8c.html" title="Módulo encargado de implementar un controlador PID. " alt="" coords="123,80,179,107"/>
+<area shape="rect" id="node4" href="$spi_8c.html" title="Fichero que contiene las funciones necesarias para usar la interfaz SPI de la raspberry PI y poder en..." alt="" coords="203,80,253,107"/>
+</map>
