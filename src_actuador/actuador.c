@@ -1,6 +1,6 @@
 /** @file actuador.c
   *
-  * @brief Fichero que contienr el programa principal. V1.2.
+  * @brief Fichero que contiene el programa principal.
   *
   * Este programa coge y lee de la plataforma los valores de la señal de referencia y de medida. -- plaformDown.c .
   * Posteriormente calcula la diferencia entre esos dos valores(error)y genera la señal de control. -- comparador.c y PID.c .
@@ -35,7 +35,7 @@
   * @brief Esta función se encarga de leer de un fichero la señal de referencia
   *  	   Solo se usa para hacer los test de programa
   *  
-  * @param  nombre. Puntero a un fichero.   
+  * @param  FILE * p. Puntero a un fichero.   
   * @return Devuelve el valor de temperatura leído. En caso de error devuelve un 0.
   *  
   * @author Juan Carlos Calvo Sansegundo.   
@@ -59,13 +59,22 @@
  }
 
 
-/** @fn void* escribir_fichero(char *nombre, int diferencia).
+/** @fn void* escribir_fichero (char *nombre,int iteracion, struct timeval instante, int temp_ref, int temp_med, int error, int error_1, int error_2, int control, int control_1, int comando)
   *
-  * @brief Esta función se encarga de escribir en un fichero la diferencia 
-  *  	   de temperatura que se ha calculado previamente.
+  * @brief Esta función se encarga de escribir en un fichero variables 
+  *        para comprobar el funcionamiento del actuador.
   *  
-  * @param  nombre. Nombre del fichero donde se va a escribir.
-  * @param  diferencia. Valor que se va a escribir.   
+  * @param  char * nombre. Nombre del fichero donde se va a escribir.
+  * @param  int iteracion. Número de la iteración.
+  * @param  struct timeval instante. Estructura que almacena el instante de la iteración.
+  * @param  int temp_ref. Valor de la temperatura de referencia.
+  * @param  int temp_med. Valor de la temperatura medida.
+  * @param  int error. Valor de la señal de error en n.
+  * @param  int error_1. Valor de la señal de error en n-1. 
+  * @param  int error_2. Valor de la señal de error en n-2.
+  * @param  int control. Valor de la señal de control en n.
+  * @param  int control_1. Valor de la señal de control en n-1.
+  * @param  int comando. Valor del comando seleccionado.   
   * @return No se devuelve nada si la operación se ha realizado correctamente
   *         En caso contrario se devuelve null;
   *  
@@ -206,46 +215,47 @@
          if (flag) {
 	     printf ("xxxxx> Error: No se ha podido extraer la temperatura medida.\n");
              temp_med.valor = temp_med_1;
-            // return -1;
+             // return -1;
          }else{ 
 	     temp_med_1 = temp_med.valor;
 	 }
          printf("-----> Temperatura medida sensor: %d\n",temp_med.valor);        
-        // Cálculo de la señal de control 
-        error = calcular_error (temp_ref.valor, temp_med.valor);
-        control = calcular_tempcontrol (error, error_1, error_2, control_1, &e_s1);
-        error_2 = error_1;
-        error_1 = error;
-        control_1 = control; 
+         
+         // Cálculo de la señal de control 
+         error = calcular_error (temp_ref.valor, temp_med.valor);
+         control = calcular_tempcontrol (error, error_1, error_2, control_1, &e_s1);
+         error_2 = error_1;
+         error_1 = error;
+         control_1 = control; 
 
-        // Selección del comando y envío de datos a la plataforma.
-        temp_setpoint = seleccionar_setpoint (control);
-        printf("-----> Temperatura setpoint: %d\n",temp_setpoint);
-        enviar_datos(temp_setpoint,control,temp_ref.valor,current_iteration.tv_sec);
+         // Selección del comando y envío de datos a la plataforma.
+         temp_setpoint = seleccionar_setpoint (control);
+         printf("-----> Temperatura setpoint: %d\n",temp_setpoint);
+         enviar_datos(temp_setpoint,control,temp_ref.valor,current_iteration.tv_sec);
             
-        // Obtención del comando y modulación de éste.
-        flag = obtener_comando (temp_setpoint, &cmd_setpoint);        
-        if (flag) {
-            printf ("xxxxx> Error: No se ha podido obtener el comando.\n");
-            //return -1;
-        }
+         // Obtención del comando y modulación de éste.
+         flag = obtener_comando (temp_setpoint, &cmd_setpoint);        
+         if (flag) {
+             printf ("xxxxx> Error: No se ha podido obtener el comando.\n");
+             //return -1;
+         }
 
-        flag = modular_comando (&cmd_setpoint, &cmd_mod_setpoint);
-        if (flag) {
-            printf ("xxxxx> Error: No se ha podido modular el comando.\n");
-            //return -1;
-        }
+         flag = modular_comando (&cmd_setpoint, &cmd_mod_setpoint);
+         if (flag) {
+             printf ("xxxxx> Error: No se ha podido modular el comando.\n");
+             //return -1;
+         }
 
-        // Transmisión del comando por la interfaz SPI.
-        flag = transmitir_comando (&cmd_mod_setpoint);
-        if (flag) {
-        printf ("xxxxx> Error: No se ha podido transmitir el comando.\n");
-          //  return -1;
-        }
+         // Transmisión del comando por la interfaz SPI.
+         flag = transmitir_comando (&cmd_mod_setpoint);
+         if (flag) {
+             printf ("xxxxx> Error: No se ha podido transmitir el comando.\n");
+             //return -1;
+         }
 
-        // Calcular intervalo de la siguiente iteración.
-        iteracion(&current_iteration, &next_iteration, &timeout);
-        a++;
+         // Calcular intervalo de la siguiente iteración.
+         iteracion(&current_iteration, &next_iteration, &timeout);
+         a++;
     }      
     
     fclose(p);

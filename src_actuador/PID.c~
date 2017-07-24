@@ -3,7 +3,7 @@
   * @brief Módulo encargado de implementar un controlador PID.
   *
   * @author Juan Carlos Calvo Sansegundo.   
-  * @date 24/05/2017.
+  * @date 24/02/2017.
   */
 
 #include <stdio.h>
@@ -16,15 +16,14 @@
   * @brief Esta función implementa el algoritmo de un controlador PID discreto,
   * y genera el valor de la señal de control en cada instante.
   *
-  * @param int err. Valor de la señal de error en el instante n.
-  * @param int err_1. Valor de la señal de error en el instante n-1.
-  * @param int err_2. Valor de la señal de error en el instante n-2.
-  * @param int control_1. Valor de la señal de control en el instante n-1. 
-  * @param int *e_s1. Valor de error que hay que corregir por el efecto windup.
+  * @param err Valor de la señal de error en el instante n, tipo int.
+  * @param err_1 Valor de la señal de error en el instante n-1, tipo int.
+  * @param err_2 Valor de la señal de error en el instante n-2, tipo int.
+  * @param control_1 Valor de la señal de control en el instante n-1,tipo int.
   * @return Un entero con el valor de la señal de control en el instante n.
   *
   * @author Juan Carlos Calvo Sansegundo.    
-  * @date 24/05/2017.
+  * @date 24/02/2017.
   */
 
 int calcular_tempcontrol (int err, int err_1, int err_2, int control_1, int* e_s1)

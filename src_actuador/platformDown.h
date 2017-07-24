@@ -74,14 +74,14 @@ struct temp_leida{
 /**  @fn int solicitar_objeto (const char* url, struct objJSON* obj)
   *  
   *  @brief Función que realiza la petición http para obtener 
-  *  objeto JSON y copia el objeto en la estructura objJSON.
+  *  objeto JSON y lo copia en la estructura objJSON.
   *  Usa funcionalidades de la librería curl para realizar la petición http
-  *  y la función estática escribir_objeto () para copiar el objeto en la estructura. 
+  *  y la función estática escribir_objeto() para copiar el objeto en la estructura. 
   *
   *  @param const char* url. Puntero a un array de caracteres con la URL del objeto JSON solicitado.
   *  @param struct objJSON* obj. Puntero a la estructura donde se va a escribir el objeto.
   *  @return void.
-  *  
+  *	 
   *  @author Juan Carlos Calvo Sansegundo.  
   *  @date 20/10/2016.
   */

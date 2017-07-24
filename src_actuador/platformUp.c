@@ -7,7 +7,6 @@
   * @date 25/05/2017 
   */
 
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -50,34 +49,32 @@ void enviar_datos(int a, int b, int c, int timestamp){
 	return ;
     }
 
-  	puerto = 3003;
-	conexion = socket(AF_INET, SOCK_STREAM, 0); // Asignación del socket.
-  	bzero((char *)&cliente, sizeof((char *)&cliente)); // Rellena toda la estructura de 0's.
+    puerto = 3003;
+    conexion = socket(AF_INET, SOCK_STREAM, 0); // Asignación del socket.
+    bzero((char *)&cliente, sizeof((char *)&cliente)); // Rellena toda la estructura de 0's.
         
-	cliente.sin_family = AF_INET; // Asignación del protocolo.
-	cliente.sin_port = htons(puerto); // Asignación del puerto.
+    cliente.sin_family = AF_INET; // Asignación del protocolo.
+    cliente.sin_port = htons(puerto); // Asignación del puerto.
 
-	bcopy((char *)servidor->h_addr, (char *)&cliente.sin_addr.s_addr, sizeof(servidor->h_length));
-  	//bcopy(); copia los datos del primer elemendo en el segundo con el tamaño máximo del tercer argumento.
+    bcopy((char *)servidor->h_addr, (char *)&cliente.sin_addr.s_addr, sizeof(servidor->h_length));
+    //bcopy(); copia los datos del primer elemendo en el segundo con el tamaño máximo del tercer argumento.
 
     fd = connect(conexion,(struct sockaddr *)&cliente, sizeof(cliente)); 
-	if(fd < 0)
-  	{ //conectando con el host
-  		printf("Error conectando con el host\n");
-  		close(conexion);
-		return ;
-  	}
+    if(fd < 0)
+    { 
+        //conectando con el host
+  	printf("Error conectando con el host\n");
+  	close(conexion);
+	return ;
+    }
 
-  	f = fdopen(fd,"w");
+    f = fdopen(fd,"w");
 
-  	if (f == NULL) 
-    	{
-    	    printf("Error conectando con el host\n");
-	    return ;
-    	}
-
-    
-
+    if (f == NULL) 
+    {
+        printf("Error conectando con el host\n");
+	return ;
+    }
 
     fprintf(f,"visualizee.greencpd.b039.cooler.temperature.supply.setpoint.2 %d %d\n",a, timestamp);
     fprintf(f,"visualizee.greencpd.b039.cooler.temperature.supply.control.2 %d.%2d %d\n",b/1000, abs(b%1000), timestamp);
@@ -87,7 +84,13 @@ void enviar_datos(int a, int b, int c, int timestamp){
 
 }
 
-/*int main(){
+
+
+/**
+  * Código de prueba.
+  *
+
+int main(){
     
     int a = 22.0;
     int b = 25.0;

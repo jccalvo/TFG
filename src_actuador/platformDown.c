@@ -24,7 +24,7 @@
 /** @fn static size_t escribir_objeto (void * ptr, size_t size, size_t nmemb, struct objJSON* obj)
   *
   * @brief Función estática que escribe el objeto descargado
-  * en una estructura objJSON creada previamente para almacenarlo.
+  * en una estructura objJSON previamente creada.
   * 
   * @param void* ptr. Puntero al objeto JSON que se quiere escribir en la estructura.
   * @param size_t size. Posiciones de memoria que ocupa el objeto JSON.
@@ -55,9 +55,9 @@
 /**  @fn int solicitar_objeto (const char* url, struct objJSON* obj)
   *  
   *  @brief Función que realiza la petición http para obtener 
-  *  objeto JSON y copia el objeto en la estructura objJSON.
+  *  objeto JSON y lo copia en la estructura objJSON.
   *  Usa funcionalidades de la librería curl para realizar la petición http
-  *  y la función estática escribir_objeto () para copiar el objeto en la estructura. 
+  *  y la función estática escribir_objeto() para copiar el objeto en la estructura. 
   *
   *  @param const char* url. Puntero a un array de caracteres con la URL del objeto JSON solicitado.
   *  @param struct objJSON* obj. Puntero a la estructura donde se va a escribir el objeto.
@@ -169,7 +169,9 @@
       return 0;
   }
 
-/*
+/**
+  * Código de prueba del módulo.
+  *
   int main(){
 
       struct objJSON obj;
